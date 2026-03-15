@@ -1,0 +1,36 @@
+.cast_wrapper {
+    width: 100%;
+}
+
+
+
+.actors_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actor_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.actor_name {
+    padding: 10px 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.actor_role {
+    color: #7a7a7a;
+}

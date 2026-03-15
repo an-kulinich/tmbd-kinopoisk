@@ -1,0 +1,36 @@
+.spinner_container {
+
+}
+
+.description_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.movie_title {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.view_more_btn {
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+}
+
+.view_more_btn:hover {
+    cursor: pointer;
+    background-color: #eaeaea;
+}
+
+.movies_wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+

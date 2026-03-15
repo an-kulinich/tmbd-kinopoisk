@@ -1,0 +1,80 @@
+.links_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.links_wrapper {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+
+    padding: 20px 0;
+    box-sizing: border-box;
+
+}
+
+.page_link {
+    border: 1px solid #d8d8d8;
+    border-radius: 20px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.page_link:hover {
+    color: #3379ed;
+    cursor: pointer;
+}
+
+.active_page_link {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+
+    background-color: #3379ed;
+    border: 1px solid #d8d8d8;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.active_page_link:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.movies_container {
+
+}
+
+/*Стили для страниц*/
+
+.common_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.content_wrapper {
+    max-width: 1200px;
+}
+
+.movies_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}

@@ -1,0 +1,60 @@
+.header_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.logo_container {
+
+}
+
+.links_container {
+
+}
+
+.separate_line {
+    color: #bfbdbd;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.page_link {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.page_link:hover {
+    color: #3379ed;
+    cursor: pointer;
+}
+
+.active_page_link {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+
+    background-color: #f1f1f1;
+    border-radius: 20px;
+}
+
+.active_page_link:hover {
+    color: #3379ed;
+    cursor: pointer;
+}
+
+.theme_icon {
+
+}
+

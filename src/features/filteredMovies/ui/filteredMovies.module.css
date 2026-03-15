@@ -1,0 +1,19 @@
+.filtered_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content_wrapper {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.sort_wrapper {
+
+}
+
+.movies_wrapper {
+
+}

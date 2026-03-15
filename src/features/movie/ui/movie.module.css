@@ -1,0 +1,15 @@
+.movie_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content_wrapper {
+    width: 1200px;
+}
+
+h3 {
+    font-size: 28px;
+    font-weight: 400;
+}
+

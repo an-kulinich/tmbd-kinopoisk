@@ -1,0 +1,11 @@
+.similar_wrapper {
+
+}
+
+.movies_wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+

@@ -1,0 +1,23 @@
+.search_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content_wrapper {
+    width: 1200px;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.movies_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+h2 {
+    margin: 0;
+    font-size: 32px;
+}
