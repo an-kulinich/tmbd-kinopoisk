@@ -9,6 +9,7 @@ import {FilteredMovies} from "@/features/filteredMovies/ui/FilteredMovies.tsx";
 import {Search} from "@/features/search/ui/Search.tsx";
 import {Favorites} from "@/features/favorites/ui/Favorites.tsx";
 import {Movie} from "@/features/movie/ui/Movie.tsx";
+import {Page404} from "@/common/components/page404/Page404.tsx";
 
 export const Path = {
     Main: "/",
@@ -42,6 +43,8 @@ export const Routing = () => {
             <Route path={Path.FilteredMovies} element={<FilteredMovies/>} />
             <Route path={Path.Search} element={<Search/>} />
             <Route path={Path.Favorites} element={<Favorites/>} />
+
+            <Route path={Path.NotFound} element={<Page404/>} />
 
         </Routes>
     );
