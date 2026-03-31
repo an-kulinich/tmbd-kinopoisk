@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tmbd-kinopoisk</title>
+    <script>
+        // Получаем имя репозитория из URL
+        const repoName = 'tmbd-kinopoisk';
+
+        // Извлекаем путь после имени репозитория
+        let redirectPath = location.pathname.replace(`/${repoName}`, '') || '/';
+
+        // Добавляем query параметры, если они есть
+        if (location.search) {
+            redirectPath += location.search;
+        }
+
+        // Сохраняем путь, чтобы восстановить его после загрузки приложения
+        sessionStorage.setItem('redirect', redirectPath);
+
+        // Перенаправляем на index.html
+        location.replace(location.origin + location.pathname + '/index.html');
+    </script>
+</head>
+<body>
+<div id="root">
+    <!-- Показываем индикатор загрузки, пока происходит перенаправление -->
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      ">
+        Downloading...
+    </div>
+</div>
+</body>
+</html>
