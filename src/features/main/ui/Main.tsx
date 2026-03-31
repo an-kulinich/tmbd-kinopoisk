@@ -29,7 +29,7 @@ export const Main = () => {
                     px: { xs: 2, sm: 3 }, // адаптивные отступы
                 }}
             >
-                <Welcome />
+                <Welcome/>
                 <SpinnerMovies
                     data={PopularMovies}
                     category={"popular"}

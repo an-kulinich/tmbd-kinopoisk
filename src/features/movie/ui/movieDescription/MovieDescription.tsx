@@ -11,7 +11,7 @@ export const MovieDescription = ({data}: Props) => {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate("/");
+        navigate(-1);
     }
     return (
         <div className={s.movie_wrapper}>

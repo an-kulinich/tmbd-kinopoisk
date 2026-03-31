@@ -1,12 +1,16 @@
 .header_container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 0;
+    justify-content: center;
 
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content_wrapper {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
     box-sizing: border-box;
 }
 
