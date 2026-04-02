@@ -1,9 +1,12 @@
 import s from "./welcome.module.css";
-import React, {useState} from "react";
-import {useNavigate} from "react-router";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
-export const Welcome = () => {
+interface WelcomeProps {
+    backgroundImage?: string;
+}
 
+export const Welcome: React.FC<WelcomeProps> = ({ backgroundImage }) => {
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
 
@@ -14,12 +17,23 @@ export const Welcome = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (inputValue.trim()) {
-            navigate(`/search?query=${encodeURIComponent(inputValue)}`)
+            navigate(`/search?query=${encodeURIComponent(inputValue)}`);
         }
     };
 
     return (
-        <div className={s.welcome_container}>
+        <div
+            className={s.welcome_container}
+            style={{
+                backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }}
+        >
+            {/* Затемнение фона */}
+            <div className={s.overlay}></div>
+
             <div className={s.content_wrapper}>
                 <span className={s.welcome}>Welcome</span>
                 <h1 className={s.title}>Browse highlighted titles from TMDB</h1>

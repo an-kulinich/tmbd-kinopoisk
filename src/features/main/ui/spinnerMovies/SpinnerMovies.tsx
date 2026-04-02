@@ -19,20 +19,22 @@ export const SpinnerMovies = ({data, category, title}: Props) => {
 
     return (
         <div className={s.spinner_container}>
-            <div className={s.description_wrapper}>
+            <div className={s.content_wrapper}>
+                <div className={s.description_wrapper}>
                 <span className={s.movie_title}>
                     {title}
                 </span>
-                <Link to={`/${Path.CategoryMovies}/${category}`}>
-                    <button className={s.view_more_btn}>
-                        View more
-                    </button>
-                </Link>
-            </div>
-            <div className={s.movies_wrapper}>
-                {data?.results?.slice(0, 6).map(movie => (
-                    <Card key={movie.id} movie={movie}/>
-                ))}
+                    <Link to={`/${Path.CategoryMovies}/${category}`}>
+                        <button className={s.view_more_btn}>
+                            View more
+                        </button>
+                    </Link>
+                </div>
+                <div className={s.movies_wrapper}>
+                    {data?.results?.slice(0, 6).map(movie => (
+                        <Card key={movie.id} movie={movie}/>
+                    ))}
+                </div>
             </div>
         </div>
     );

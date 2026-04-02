@@ -1,12 +1,12 @@
-import { Box, Container } from "@mui/material";
 import { SpinnerMovies } from "./spinnerMovies/SpinnerMovies.tsx";
 import { Welcome } from "./welcome/Welcome.tsx";
 import {
-    useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
-    useGetUpcomingMoviesQuery
+    useGetUpcomingMoviesQuery,
+    useGetNowPlayingMoviesQuery
 } from "@/features/main/api/mainApi.ts";
+import { useMemo } from "react";
 
 export const Main = () => {
     const { data: PopularMovies } = useGetPopularMoviesQuery(1);
@@ -14,31 +14,45 @@ export const Main = () => {
     const { data: UpcomingMovies } = useGetUpcomingMoviesQuery(1);
     const { data: NowPlayingMovies } = useGetNowPlayingMoviesQuery(1);
 
+    // Мемоизируем случайную картинку, чтобы она не менялась при ререндерах
+    const randomBackgroundImage = useMemo(() => {
+        if (PopularMovies?.results && PopularMovies.results.length > 0) {
+            const moviesWithBackdrop = PopularMovies.results.filter(
+                movie => movie.backdrop_path
+            );
+
+            if (moviesWithBackdrop.length > 0) {
+                const randomIndex = Math.floor(Math.random() * moviesWithBackdrop.length);
+                const randomMovie = moviesWithBackdrop[randomIndex];
+                return `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`;
+            }
+        }
+        return "";
+    }, [PopularMovies]); // Зависимость только от PopularMovies
+
     return (
-        <Box sx={{width: "100%", display: "flex", justifyContent: "center",}}>
-            <Container maxWidth={false} sx={{maxWidth: "1200px", px: { xs: 2, sm: 3 },}}>
-                <Welcome/>
-                <SpinnerMovies
-                    data={PopularMovies}
-                    category={"popular"}
-                    title={"Popular Movies"}
-                />
-                <SpinnerMovies
-                    data={TopRatedMovies}
-                    category={"top-rated"}
-                    title={"Top Rated Movies"}
-                />
-                <SpinnerMovies
-                    data={UpcomingMovies}
-                    category={"upcoming"}
-                    title={"Upcoming Movies"}
-                />
-                <SpinnerMovies
-                    data={NowPlayingMovies}
-                    category={"now-playing"}
-                    title={"Now Playing Movies"}
-                />
-            </Container>
-        </Box>
+        <>
+            <Welcome backgroundImage={randomBackgroundImage} />
+            <SpinnerMovies
+                data={PopularMovies}
+                category={"popular"}
+                title={"Popular Movies"}
+            />
+            <SpinnerMovies
+                data={TopRatedMovies}
+                category={"top-rated"}
+                title={"Top Rated Movies"}
+            />
+            <SpinnerMovies
+                data={UpcomingMovies}
+                category={"upcoming"}
+                title={"Upcoming Movies"}
+            />
+            <SpinnerMovies
+                data={NowPlayingMovies}
+                category={"now-playing"}
+                title={"Now Playing Movies"}
+            />
+        </>
     );
 };
