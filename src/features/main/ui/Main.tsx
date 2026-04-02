@@ -7,6 +7,7 @@ import {
     useGetNowPlayingMoviesQuery
 } from "@/features/main/api/mainApi.ts";
 import { useMemo } from "react";
+import {Box, Container} from "@mui/material";
 
 export const Main = () => {
     const { data: PopularMovies } = useGetPopularMoviesQuery(1);
@@ -31,7 +32,8 @@ export const Main = () => {
     }, [PopularMovies]); // Зависимость только от PopularMovies
 
     return (
-        <div>
+        <Box sx={{width: "100%", display: "flex", justifyContent: "center",}}>
+            <Container maxWidth={false} sx={{maxWidth: "1200px", px: { xs: 2, sm: 3 },}}>
             <Welcome backgroundImage={randomBackgroundImage} />
             <SpinnerMovies
                 data={PopularMovies}
@@ -53,6 +55,7 @@ export const Main = () => {
                 category={"now-playing"}
                 title={"Now Playing Movies"}
             />
-        </div>
+            </Container>
+        </Box>
     );
 };
