@@ -14,7 +14,6 @@ export const Welcome = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (inputValue.trim()) {
-            // navigate(`/search/${inputValue}`)
             navigate(`/search?query=${encodeURIComponent(inputValue)}`)
         }
     };

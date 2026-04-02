@@ -1,3 +1,4 @@
+// searchElement.tsx - без onSearch
 import React, { useState } from "react";
 import s from "./searchElement.module.css";
 
@@ -14,16 +15,16 @@ export const SearchElement = ({ onSearchSubmit, query, onClear }: Props) => {
         const nextValue = e.target.value;
         setInputValue(nextValue);
 
-        // При очистке инпута (крестиком) сразу сбрасываем результаты
-        if (!nextValue) {
-            onClear?.();
+        // onChange срабатывает и при клике на крестик
+        if (!nextValue && onClear) {
+            onClear();
         }
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (inputValue.trim()) {
-            onSearchSubmit(inputValue.trim())
+            onSearchSubmit(inputValue.trim());
         }
     };
 

@@ -15,20 +15,8 @@ export const Main = () => {
     const { data: NowPlayingMovies } = useGetNowPlayingMoviesQuery(1);
 
     return (
-        <Box
-            sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-            }}
-        >
-            <Container
-                maxWidth={false}
-                sx={{
-                    maxWidth: "1200px",
-                    px: { xs: 2, sm: 3 }, // адаптивные отступы
-                }}
-            >
+        <Box sx={{width: "100%", display: "flex", justifyContent: "center",}}>
+            <Container maxWidth={false} sx={{maxWidth: "1200px", px: { xs: 2, sm: 3 },}}>
                 <Welcome/>
                 <SpinnerMovies
                     data={PopularMovies}
