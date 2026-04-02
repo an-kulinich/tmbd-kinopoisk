@@ -31,7 +31,7 @@ export const Main = () => {
     }, [PopularMovies]); // Зависимость только от PopularMovies
 
     return (
-        <>
+        <div>
             <Welcome backgroundImage={randomBackgroundImage} />
             <SpinnerMovies
                 data={PopularMovies}
@@ -53,6 +53,6 @@ export const Main = () => {
                 category={"now-playing"}
                 title={"Now Playing Movies"}
             />
-        </>
+        </div>
     );
 };
