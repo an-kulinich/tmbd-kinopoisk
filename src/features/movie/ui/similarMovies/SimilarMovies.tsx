@@ -1,13 +1,12 @@
 import s from './similarMovies.module.css'
-import type {SimilarMoviesResponse} from "@/features/movie/lib";
-import {Card} from "@/common/components/card/Card.tsx";
+import type {SimilarMoviesResponse} from "@/features/movie/lib"
+import {Card} from "@/common/components/card/Card.tsx"
 
 type Props = {
     data: SimilarMoviesResponse | undefined,
 }
 
 export const SimilarMovies = ({data}: Props) => {
-    console.log(data)
     return (
         <div className={s.similar_wrapper}>
             <h3>Similar Movies</h3>

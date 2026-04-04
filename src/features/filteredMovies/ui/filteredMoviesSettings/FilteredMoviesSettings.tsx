@@ -12,33 +12,33 @@ import {
     Grid,
     Paper,
     type SelectChangeEvent
-} from '@mui/material';
+} from '@mui/material'
 
 const genres = [
     'Action', 'Adventure', 'Animation', 'Comedy', 'Crime', 'Documentary',
     'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Mystery', 'Romance',
     'Science Fiction', 'TV Movie', 'Thriller', 'War', 'Western'
-];
+]
 
-type FilteredMoviesSettingsProps = {
-    sortBy: string;
-    onSortChange: (value: string) => void;
-    ratingRange: number[];
-    onRatingChange: (newValue: number | number[]) => void;
-    selectedGenres: string[];
-    onGenreToggle: (genre: string) => void;
-    onReset: () => void;
+type Props = {
+    sortBy: string,
+    onSortChange: (value: string) => void,
+    ratingRange: number[],
+    onRatingChange: (newValue: number | number[]) => void,
+    selectedGenres: string[],
+    onGenreToggle: (genre: string) => void,
+    onReset: () => void
 };
 
 export const FilteredMoviesSettings = ({sortBy, onSortChange, ratingRange, onRatingChange, selectedGenres, onGenreToggle, onReset
-}: FilteredMoviesSettingsProps) => {
+}: Props) => {
 
     const handleSelectChange = (event: SelectChangeEvent) => {
-        onSortChange(event.target.value);
+        onSortChange(event.target.value)
     };
 
     const handleSliderChange = (_event: Event, newValue: number | number[]) => {
-        onRatingChange(newValue);
+        onRatingChange(newValue)
     };
 
     return (

@@ -1,4 +1,4 @@
-import type {Movie, PaginatedResponse} from "@/common/types/types.ts";
+import type {Movie, PaginatedResponse} from "@/common/types/types.ts"
 
 // Тип для жанра
 export type Genre = {
@@ -79,4 +79,4 @@ export type CastResponse = {
 }
 
 //Тип для похожих фильмов
-export type SimilarMoviesResponse = PaginatedResponse<Movie>;
+export type SimilarMoviesResponse = PaginatedResponse<Movie>

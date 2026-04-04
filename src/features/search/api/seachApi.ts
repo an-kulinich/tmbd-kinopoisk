@@ -1,5 +1,5 @@
-import { baseApi } from "@/app/baseApi";
-import type { SearchResponse } from "@/features/search/lib";
+import { baseApi } from "@/app/baseApi"
+import type { SearchResponse } from "@/features/search/lib"
 
 export const searchApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -17,4 +17,4 @@ export const searchApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useSearchMoviesQuery } = searchApi;
+export const { useSearchMoviesQuery } = searchApi

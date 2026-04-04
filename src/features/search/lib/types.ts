@@ -1,3 +1,3 @@
-import type {Movie, PaginatedResponse} from "@/common/types/types.ts";
+import type {Movie, PaginatedResponse} from "@/common/types/types.ts"
 
-export type SearchResponse = PaginatedResponse<Movie>;
+export type SearchResponse = PaginatedResponse<Movie>

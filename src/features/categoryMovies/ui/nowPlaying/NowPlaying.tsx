@@ -6,8 +6,8 @@ import {Pagination} from "@/common/components/pagination/Pagination.tsx"
 
 export const NowPlaying = () => {
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const { data } = useGetNowPlayingMoviesQuery(currentPage);
+    const [currentPage, setCurrentPage] = useState(1)
+    const { data } = useGetNowPlayingMoviesQuery(currentPage)
 
     return (
         <div className={s.common_container}>

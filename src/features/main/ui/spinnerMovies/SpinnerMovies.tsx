@@ -1,13 +1,13 @@
 import s from "./spinnerMovies.module.css"
-import {Card} from "@/common/components/card/Card.tsx";
+import {Card} from "@/common/components/card/Card.tsx"
 import type {
     NowPlayingMoviesResponse,
     PopularMoviesResponse,
     TopRatedMoviesResponse,
     UpcomingMoviesResponse
-} from "@/common/types/types.ts";
-import {Link} from "react-router";
-import {Path} from "@/common/routing/Routing.tsx";
+} from "@/common/types/types.ts"
+import {Link} from "react-router"
+import {Path} from "@/common/routing/Routing.tsx"
 
 type Props = {
     data?: PopularMoviesResponse | NowPlayingMoviesResponse | UpcomingMoviesResponse | TopRatedMoviesResponse

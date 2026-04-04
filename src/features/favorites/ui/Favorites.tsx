@@ -1,12 +1,12 @@
-// src/features/favorites/ui/Favorites.tsx
-import s from './favorites.module.css';
-import { Link } from 'react-router';
-import { Card } from '@/common/components/card/Card';
-import {useAppSelector} from "@/common/hooks";
-import {type FavoriteMovie, selectFavorites} from "@/features/favorites/model/favoritesSlice.ts";
-import type {Movie} from "@/common/types/types.ts";
+import s from './favorites.module.css'
+import { Link } from 'react-router'
+import { Card } from '@/common/components/card/Card'
+import {useAppSelector} from "@/common/hooks"
+import {type FavoriteMovie, selectFavorites} from "@/features/favorites/model/favoritesSlice.ts"
+import type {Movie} from "@/common/types/types.ts"
 
 export const Favorites = () => {
+
     const favorites: FavoriteMovie[] = useAppSelector(selectFavorites);
 
     if (favorites.length === 0) {

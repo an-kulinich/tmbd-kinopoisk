@@ -1,24 +1,20 @@
-import { SearchElement } from "@/common/components/searchElement/SearchElement";
-import s from "./search.module.css";
-import { useState } from "react";
-import { useSearchMoviesQuery } from "@/features/search/api/seachApi";
-import { Card } from "@/common/components/card/Card";
-import { Pagination } from "@/common/components/pagination/Pagination";
-import { useSearchParams } from "react-router";
+import { SearchElement } from "@/features/search/ui/searchElement/SearchElement"
+import s from "./search.module.css"
+import { useState } from "react"
+import { useSearchMoviesQuery } from "@/features/search/api/seachApi"
+import { Card } from "@/common/components/card/Card"
+import { Pagination } from "@/common/components/pagination/Pagination"
+import { useSearchParams } from "react-router"
 
 export const Search = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [currentPage, setCurrentPage] = useState(1);
 
-	const searchTerm = searchParams.get("query") ?? "";
+	const [searchParams, setSearchParams] = useSearchParams()
+	const [currentPage, setCurrentPage] = useState(1)
+
+	const searchTerm = searchParams.get("query") ?? ""
 
 	// Запрос выполняется только если есть searchTerm
-	const {
-		data,
-		isFetching,
-		isLoading,
-		isError
-	} = useSearchMoviesQuery(
+	const {data, isFetching, isLoading, isError} = useSearchMoviesQuery(
 		{ searchQuery: searchTerm, page: currentPage },
 		{ skip: !searchTerm.trim() }
 	);
@@ -33,14 +29,12 @@ export const Search = () => {
 		setCurrentPage(1);
 		// Очищаем URL параметры
 		setSearchParams({});
-		// Опционально: перенаправление на главную
-		// navigate('/');
 	};
 
 	// Определяем, нужно ли показывать результаты
-	const showResults = searchTerm.trim() && !isLoading && !isFetching;
-	const hasResults = data?.results && data.results.length > 0;
-	const isEmptyResults = showResults && !hasResults && !isError;
+	const showResults = searchTerm.trim() && !isLoading && !isFetching
+	const hasResults = data?.results && data.results.length > 0
+	const isEmptyResults = showResults && !hasResults && !isError
 
 	return (
 		<div className={s.search_container}>
@@ -48,7 +42,7 @@ export const Search = () => {
 				<h2>Search results</h2>
 
 				<SearchElement
-					key={searchTerm || "empty"} // Принудительный ререндер при очистке
+					key={searchTerm || "empty"}
 					onSearchSubmit={onSearchSubmit}
 					onClear={onSearchClear}
 					query={searchTerm}

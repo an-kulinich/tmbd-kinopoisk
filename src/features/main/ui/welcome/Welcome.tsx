@@ -1,25 +1,26 @@
-import s from "./welcome.module.css";
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import s from "./welcome.module.css"
+import { useState } from "react"
+import { useNavigate } from "react-router"
+import type { ChangeEvent, MouseEvent } from "react"
 
-interface WelcomeProps {
-    backgroundImage?: string;
+type Props = {
+    backgroundImage?: string
 }
 
-export const Welcome: React.FC<WelcomeProps> = ({ backgroundImage }) => {
-    const [inputValue, setInputValue] = useState("");
-    const navigate = useNavigate();
+export const Welcome = ({ backgroundImage }: Props) => {
+    const [inputValue, setInputValue] = useState("")
+    const navigate = useNavigate()
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
-    };
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value)
+    }
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
         if (inputValue.trim()) {
-            navigate(`/search?query=${encodeURIComponent(inputValue)}`);
+            navigate(`/search?query=${encodeURIComponent(inputValue)}`)
         }
-    };
+    }
 
     return (
         <div
@@ -37,7 +38,7 @@ export const Welcome: React.FC<WelcomeProps> = ({ backgroundImage }) => {
             <div className={s.content_wrapper}>
                 <span className={s.welcome}>Welcome</span>
                 <h1 className={s.title}>Browse highlighted titles from TMDB</h1>
-                <form onSubmit={handleSubmit} className={s.search_form}>
+                <div className={s.search_form}>
                     <div className={s.search_container}>
                         <input
                             type="search"
@@ -47,14 +48,15 @@ export const Welcome: React.FC<WelcomeProps> = ({ backgroundImage }) => {
                             placeholder="Search for a movie"
                         />
                         <button
-                            type="submit"
+                            type="button"
                             className={s.search_btn}
+                            onClick={handleSubmit}
                             disabled={!inputValue.trim()}
                         >
                             Search
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );

@@ -1,15 +1,15 @@
-import s from "@/features/categoryMovies/ui/categoryMovies.module.css";
-import { Card } from "@/common/components/card/Card.tsx";
-import { Pagination } from "@/common/components/pagination/Pagination.tsx";
-import type { FilteredResponse } from "@/features/filteredMovies/lib/types.ts";
+import s from "@/features/categoryMovies/ui/categoryMovies.module.css"
+import { Card } from "@/common/components/card/Card.tsx"
+import { Pagination } from "@/common/components/pagination/Pagination.tsx"
+import type { FilteredResponse } from "@/features/filteredMovies/lib/types.ts"
 
-type SortedMoviesProps = {
-    data: FilteredResponse | undefined;
-    currentPage: number;
-    setCurrentPage: (page: number) => void;
+type Props = {
+    data: FilteredResponse | undefined
+    currentPage: number
+    setCurrentPage: (page: number) => void
 };
 
-export const SortedMovies = ({ data, currentPage, setCurrentPage }: SortedMoviesProps) => {
+export const SortedMovies = ({ data, currentPage, setCurrentPage }: Props) => {
     return (
         <>
             <div className={s.movies_wrapper}>

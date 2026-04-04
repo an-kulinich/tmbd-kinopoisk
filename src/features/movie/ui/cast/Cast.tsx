@@ -1,5 +1,5 @@
-import s from "./cast.module.css";
-import type {CastResponse} from "@/features/movie/lib";
+import s from "./cast.module.css"
+import type {CastResponse} from "@/features/movie/lib"
 
 type Props = {
     data: CastResponse | undefined,

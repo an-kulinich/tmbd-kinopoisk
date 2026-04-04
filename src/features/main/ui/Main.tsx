@@ -1,18 +1,18 @@
-import { SpinnerMovies } from "./spinnerMovies/SpinnerMovies.tsx";
-import { Welcome } from "./welcome/Welcome.tsx";
+import { SpinnerMovies } from "./spinnerMovies/SpinnerMovies.tsx"
+import { Welcome } from "./welcome/Welcome.tsx"
 import {
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetUpcomingMoviesQuery,
     useGetNowPlayingMoviesQuery
-} from "@/features/main/api/mainApi.ts";
-import { useMemo } from "react";
+} from "@/features/main/api/mainApi.ts"
+import { useMemo } from "react"
 
 export const Main = () => {
-    const { data: PopularMovies } = useGetPopularMoviesQuery(1);
-    const { data: TopRatedMovies } = useGetTopRatedMoviesQuery(1);
-    const { data: UpcomingMovies } = useGetUpcomingMoviesQuery(1);
-    const { data: NowPlayingMovies } = useGetNowPlayingMoviesQuery(1);
+    const { data: PopularMovies } = useGetPopularMoviesQuery(1)
+    const { data: TopRatedMovies } = useGetTopRatedMoviesQuery(1)
+    const { data: UpcomingMovies } = useGetUpcomingMoviesQuery(1)
+    const { data: NowPlayingMovies } = useGetNowPlayingMoviesQuery(1)
 
     // Мемоизируем случайную картинку, чтобы она не менялась при ререндерах
     const randomBackgroundImage = useMemo(() => {
@@ -22,13 +22,13 @@ export const Main = () => {
             );
 
             if (moviesWithBackdrop.length > 0) {
-                const randomIndex = Math.floor(Math.random() * moviesWithBackdrop.length);
-                const randomMovie = moviesWithBackdrop[randomIndex];
-                return `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`;
+                const randomIndex = Math.floor(Math.random() * moviesWithBackdrop.length)
+                const randomMovie = moviesWithBackdrop[randomIndex]
+                return `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`
             }
         }
-        return "";
-    }, [PopularMovies]); // Зависимость только от PopularMovies
+        return ""
+    }, [PopularMovies])
 
     return (
         <>

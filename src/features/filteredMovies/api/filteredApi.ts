@@ -1,7 +1,7 @@
-import { baseApi } from "@/app/baseApi";
-import type { FilteredResponse } from "@/features/filteredMovies/lib/types.ts";
+import { baseApi } from "@/app/baseApi"
+import type { FilteredResponse } from "@/features/filteredMovies/lib/types.ts"
 
-// Карта соответствия названий жанров их ID (TMDb)
+
 export const genreMap: Record<string, number> = {
     'Action': 28,
     'Adventure': 12,
@@ -22,15 +22,14 @@ export const genreMap: Record<string, number> = {
     'Thriller': 53,
     'War': 10752,
     'Western': 37
-};
+}
 
-// Тип аргументов для запроса
 export type FilteredMoviesArgs = {
-    page: number;
-    sortBy?: string;        // например 'popularity.desc'
-    ratingRange?: number[]; // [min, max]
-    genreIds?: number[];    // массив ID жанров
-};
+    page: number,
+    sortBy?: string,
+    ratingRange?: number[],
+    genreIds?: number[]
+}
 
 export const filteredApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -42,16 +41,16 @@ export const filteredApi = baseApi.injectEndpoints({
                 };
 
                 if (sortBy) {
-                    params.sort_by = sortBy;
+                    params.sort_by = sortBy
                 }
 
                 if (ratingRange && ratingRange.length === 2) {
-                    if (ratingRange[0] > 0) params['vote_average.gte'] = ratingRange[0];
-                    if (ratingRange[1] < 10) params['vote_average.lte'] = ratingRange[1];
+                    if (ratingRange[0] > 0) params['vote_average.gte'] = ratingRange[0]
+                    if (ratingRange[1] < 10) params['vote_average.lte'] = ratingRange[1]
                 }
 
                 if (genreIds && genreIds.length) {
-                    params.with_genres = genreIds.join(',');
+                    params.with_genres = genreIds.join(',')
                 }
 
                 return {
@@ -62,6 +61,6 @@ export const filteredApi = baseApi.injectEndpoints({
             providesTags: ["FilteredMovies"],
         }),
     }),
-});
+})
 
-export const { useGetFilteredMoviesQuery } = filteredApi;
+export const { useGetFilteredMoviesQuery } = filteredApi

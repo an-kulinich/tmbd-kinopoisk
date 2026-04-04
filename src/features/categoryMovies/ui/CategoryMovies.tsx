@@ -1,6 +1,6 @@
-import s from "./categoryMovies.module.css";
-import {NavLink, Outlet} from "react-router";
-import {Path} from "@/common/routing/Routing.tsx";
+import s from "./categoryMovies.module.css"
+import {NavLink, Outlet} from "react-router"
+import {Path} from "@/common/routing/Routing.tsx"
 
 export const CategoryMovies = () => {
     return (

@@ -6,8 +6,8 @@ import {Pagination} from "@/common/components/pagination/Pagination.tsx"
 
 export const TopRated = () => {
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const { data } = useGetTopRatedMoviesQuery(currentPage);
+    const [currentPage, setCurrentPage] = useState(1)
+    const { data } = useGetTopRatedMoviesQuery(currentPage)
 
     return (
         <div className={s.common_container}>

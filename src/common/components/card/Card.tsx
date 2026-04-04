@@ -4,6 +4,7 @@ import noPoster from "@/assets/img/noPoster/noPoster.png"
 import {useNavigate} from "react-router"
 import {useAppDispatch, useAppSelector} from "@/common/hooks"
 import {selectIsFavorite, toggleFavoriteAC} from "@/features/favorites/model/favoritesSlice.ts"
+import type {MouseEvent} from 'react'
 
 type Props = {
     movie: Movie
@@ -11,13 +12,13 @@ type Props = {
 
 export const Card = ({movie}: Props) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
-    const isLiked = useAppSelector((state) => selectIsFavorite(state, movie.id));
+    const isLiked = useAppSelector((state) => selectIsFavorite(state, movie.id))
 
-    const handleLikeClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
+    const handleLikeClick = (e: MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         dispatch(toggleFavoriteAC({
             id: movie.id,
             title: movie.title,
@@ -27,20 +28,20 @@ export const Card = ({movie}: Props) => {
     };
 
     const redirectToMovie = () => {
-        navigate(`/movie/${movie.id}`); // Переход на страницу фильма
+        navigate(`/movie/${movie.id}`)
     };
 
     const getRatingClass = () => {
-        if (movie.vote_average < 5) return s.rating_red;
-        if (movie.vote_average < 7) return s.rating_yellow;
-        return s.rating_green;
+        if (movie.vote_average < 5) return s.rating_red
+        if (movie.vote_average < 7) return s.rating_yellow
+        return s.rating_green
     };
 
     const getPoster = () => {
         if (movie.poster_path) {
-            return `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`;
+            return `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
         }
-        return `url(${noPoster})`; //заглушка
+        return `url(${noPoster})`
     }
 
     return (

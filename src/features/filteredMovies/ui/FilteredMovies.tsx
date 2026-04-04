@@ -1,20 +1,20 @@
-import { useMemo, useState } from 'react';
-import { Box, Paper } from '@mui/material';
-import { genreMap, useGetFilteredMoviesQuery } from "@/features/filteredMovies/api/filteredApi.ts";
-import {SortedMovies} from "@/features/filteredMovies/ui/sortedMovies/SortedMovies.tsx";
-import {FilteredMoviesSettings} from "@/features/filteredMovies/ui/filteredMoviesSettings/FilteredMoviesSettings.tsx";
+import { useMemo, useState } from 'react'
+import { Box, Paper } from '@mui/material'
+import { genreMap, useGetFilteredMoviesQuery } from "@/features/filteredMovies/api/filteredApi.ts"
+import {SortedMovies} from "@/features/filteredMovies/ui/sortedMovies/SortedMovies.tsx"
+import {FilteredMoviesSettings} from "@/features/filteredMovies/ui/filteredMoviesSettings/FilteredMoviesSettings.tsx"
 
 export const FilteredMovies = () => {
     // Состояния фильтров
-    const [sortBy, setSortBy] = useState('popularity_desc');
-    const [ratingRange, setRatingRange] = useState<number[]>([0, 10]);
-    const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [sortBy, setSortBy] = useState('popularity_desc')
+    const [ratingRange, setRatingRange] = useState<number[]>([0, 10])
+    const [selectedGenres, setSelectedGenres] = useState<string[]>([])
+    const [currentPage, setCurrentPage] = useState(1)
 
     // Преобразование выбранных жанров в массив ID
     const genreIds = useMemo(() => {
-        return selectedGenres.map(genre => genreMap[genre]).filter(id => id !== undefined);
-    }, [selectedGenres]);
+        return selectedGenres.map(genre => genreMap[genre]).filter(id => id !== undefined)
+    }, [selectedGenres])
 
     const getSortByParam = (sortValue: string): string => {
         const map: Record<string, string> = {
@@ -26,8 +26,8 @@ export const FilteredMovies = () => {
             release_date_asc: 'release_date.asc',
             title_a_z: 'original_title.asc',
             title_z_a: 'original_title.desc',
-        };
-        return map[sortValue] || 'popularity.desc';
+        }
+        return map[sortValue] || 'popularity.desc'
     };
 
     const queryArgs = useMemo(() => ({
@@ -35,33 +35,33 @@ export const FilteredMovies = () => {
         sortBy: getSortByParam(sortBy),
         ratingRange: ratingRange,
         genreIds: genreIds.length ? genreIds : undefined,
-    }), [currentPage, sortBy, ratingRange, genreIds]);
+    }), [currentPage, sortBy, ratingRange, genreIds])
 
-    const { data } = useGetFilteredMoviesQuery(queryArgs);
+    const { data } = useGetFilteredMoviesQuery(queryArgs)
 
     // Обработчики
     const handleSortChange = (value: string) => {
-        setSortBy(value);
-        setCurrentPage(1);
+        setSortBy(value)
+        setCurrentPage(1)
     };
 
     const handleRatingChange = (newValue: number | number[]) => {
-        setRatingRange(newValue as number[]);
-        setCurrentPage(1);
+        setRatingRange(newValue as number[])
+        setCurrentPage(1)
     };
 
     const handleGenreToggle = (genre: string) => {
         setSelectedGenres(prev =>
             prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
         );
-        setCurrentPage(1);
+        setCurrentPage(1)
     };
 
     const handleReset = () => {
-        setSortBy('popularity_desc');
-        setRatingRange([0, 10]);
-        setSelectedGenres([]);
-        setCurrentPage(1);
+        setSortBy('popularity_desc')
+        setRatingRange([0, 10])
+        setSelectedGenres([])
+        setCurrentPage(1)
     };
 
     return (

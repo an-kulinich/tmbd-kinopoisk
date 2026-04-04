@@ -15,49 +15,48 @@ type Props = {
 
 export const Pagination = ({data, currentPage, setCurrentPage}: Props) => {
 
-    // Обработчики для пагинации
     const goToPage = (page: number) => {
-        setCurrentPage(page);
+        setCurrentPage(page)
     };
 
     // Функция для генерации массива номеров страниц
     const getPageNumbers = () => {
-        if (!data) return [];
+        if (!data) return []
 
-        const totalPages = data.total_pages;
-        const maxVisiblePages = 5; // Максимальное количество отображаемых страниц
-        let pages: (number | string)[] = [];
+        const totalPages = data.total_pages
+        const maxVisiblePages = 5 // Максимальное количество отображаемых страниц
+        let pages: (number | string)[] = []
 
         if (totalPages <= maxVisiblePages) {
             // Если страниц меньше 5, показываем все
-            pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+            pages = Array.from({ length: totalPages }, (_, i) => i + 1)
         } else {
             // Всегда показываем первую страницу
             pages.push(1);
 
             if (currentPage > 3) {
-                pages.push('...');
+                pages.push('...')
             }
 
             // Показываем страницы вокруг текущей
-            const start = Math.max(2, currentPage - 1);
-            const end = Math.min(totalPages - 1, currentPage + 1);
+            const start = Math.max(2, currentPage - 1)
+            const end = Math.min(totalPages - 1, currentPage + 1)
 
             for (let i = start; i <= end; i++) {
-                pages.push(i);
+                pages.push(i)
             }
 
             if (currentPage < totalPages - 2) {
-                pages.push('...');
+                pages.push('...')
             }
 
             // Всегда показываем последнюю страницу
             if (totalPages > 1) {
-                pages.push(totalPages);
+                pages.push(totalPages)
             }
         }
 
-        return pages;
+        return pages
     };
 
     return (
