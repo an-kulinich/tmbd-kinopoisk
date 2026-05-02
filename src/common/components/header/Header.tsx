@@ -2,8 +2,19 @@ import { NavLink } from "react-router";
 import { Path } from "@/common/routing/Routing.tsx";
 import s from "./header.module.css"
 import logo from "@/assets/img/logo/logo.svg"
+import {Switch} from "@mui/material";
+import {useAppDispatch, useAppSelector} from "@/common/hooks";
+import {selectTheme, toggleTheme} from "@/app/app-slice.ts";
 
 export const Header = () => {
+
+    const dispatch = useAppDispatch();
+    const theme = useAppSelector(selectTheme);
+
+    const handleChange = () => {
+        dispatch(toggleTheme());
+    }
+
     return (
         <div className={s.header_container}>
             <div className={s.content_wrapper}>
@@ -22,7 +33,12 @@ export const Header = () => {
                     <NavLink to={Path.Favorites} className={({ isActive }) => isActive ? s.active_page_link : s.page_link}>Favorites</NavLink>
                 </nav>
                 <div className={s.theme_icon}>
-                    <img src="" alt="theme_icon" />
+                    <span>Dark theme</span>
+                    <Switch
+                        checked={theme === "dark"}
+                        onChange={handleChange}
+                        slotProps={{ input: { 'aria-label': 'controlled' } }}
+                    />
                 </div>
             </div>
         </div>

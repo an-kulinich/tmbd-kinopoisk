@@ -42,8 +42,8 @@ const favoritesSlice = createSlice({
     },
 });
 
-export const { selectFavorites, selectIsFavorite} = favoritesSlice.selectors
+export const { selectFavorites, selectIsFavorite } = favoritesSlice.selectors
 
-export const {toggleFavoriteAC} = favoritesSlice.actions
+export const { toggleFavoriteAC } = favoritesSlice.actions
 
 export const favoritesReducer = favoritesSlice.reducer

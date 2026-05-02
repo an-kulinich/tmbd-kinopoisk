@@ -3,6 +3,7 @@ import { Routing } from "@/common/routing/Routing.tsx";
 import { Footer } from "@/common/components/footer/Footer.tsx";
 
 export const App = () => {
+
     return (
         <>
             <Header />
