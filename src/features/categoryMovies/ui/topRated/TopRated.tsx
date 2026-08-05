@@ -1,13 +1,13 @@
-import {useState} from "react"
 import {useGetTopRatedMoviesQuery} from "@/features/main/api/mainApi.ts"
 import {Card} from "@/common/components/card/Card.tsx"
 import s from "@/features/categoryMovies/ui/categoryMovies.module.css"
 import {Pagination} from "@/common/components/pagination/Pagination.tsx"
+import {usePageParam} from "@/common/hooks"
 
 export const TopRated = () => {
 
-    const [currentPage, setCurrentPage] = useState(1)
-    const { data } = useGetTopRatedMoviesQuery(currentPage)
+    const [currentPage, setCurrentPage] = usePageParam()
+    const { data, isFetching } = useGetTopRatedMoviesQuery(currentPage)
 
     return (
         <div className={s.common_container}>
@@ -18,7 +18,12 @@ export const TopRated = () => {
                         <Card key={movie.id} movie={movie}/>
                     ))}
                 </div>
-                <Pagination data={data} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+                <Pagination
+                    page={currentPage}
+                    totalPages={data?.total_pages ?? 0}
+                    onPageChange={setCurrentPage}
+                    disabled={isFetching}
+                />
             </div>
         </div>
     );

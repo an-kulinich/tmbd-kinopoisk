@@ -1,15 +1,15 @@
 import { SearchElement } from "@/features/search/ui/searchElement/SearchElement"
 import s from "./search.module.css"
-import { useState } from "react"
 import { useSearchMoviesQuery } from "@/features/search/api/seachApi"
 import { Card } from "@/common/components/card/Card"
 import { Pagination } from "@/common/components/pagination/Pagination"
 import { useSearchParams } from "react-router"
+import { usePageParam } from "@/common/hooks"
 
 export const Search = () => {
 
 	const [searchParams, setSearchParams] = useSearchParams()
-	const [currentPage, setCurrentPage] = useState(1)
+	const [currentPage, setCurrentPage] = usePageParam()
 
 	const searchTerm = searchParams.get("query") ?? ""
 
@@ -20,13 +20,11 @@ export const Search = () => {
 	);
 
 	const onSearchSubmit = (query: string) => {
-		setCurrentPage(1);
 		// Обновляем URL с новым поисковым запросом
 		setSearchParams({ query });
 	};
 
 	const onSearchClear = () => {
-		setCurrentPage(1);
 		// Очищаем URL параметры
 		setSearchParams({});
 	};
@@ -62,13 +60,12 @@ export const Search = () => {
 								<Card key={movie.id} movie={movie} />
 							))}
 						</div>
-						{data.total_pages > 1 && (
-							<Pagination
-								data={data}
-								currentPage={currentPage}
-								setCurrentPage={setCurrentPage}
-							/>
-						)}
+						<Pagination
+							page={currentPage}
+							totalPages={data.total_pages}
+							onPageChange={setCurrentPage}
+							disabled={isFetching}
+						/>
 					</div>
 				)}
 

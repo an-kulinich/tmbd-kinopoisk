@@ -3,13 +3,14 @@ import { Box, Paper } from '@mui/material'
 import { genreMap, useGetFilteredMoviesQuery } from "@/features/filteredMovies/api/filteredApi.ts"
 import {SortedMovies} from "@/features/filteredMovies/ui/sortedMovies/SortedMovies.tsx"
 import {FilteredMoviesSettings} from "@/features/filteredMovies/ui/filteredMoviesSettings/FilteredMoviesSettings.tsx"
+import {usePageParam} from "@/common/hooks"
 
 export const FilteredMovies = () => {
     // Состояния фильтров
     const [sortBy, setSortBy] = useState('popularity_desc')
     const [ratingRange, setRatingRange] = useState<number[]>([0, 10])
     const [selectedGenres, setSelectedGenres] = useState<string[]>([])
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = usePageParam()
 
     // Преобразование выбранных жанров в массив ID
     const genreIds = useMemo(() => {
@@ -37,7 +38,7 @@ export const FilteredMovies = () => {
         genreIds: genreIds.length ? genreIds : undefined,
     }), [currentPage, sortBy, ratingRange, genreIds])
 
-    const { data } = useGetFilteredMoviesQuery(queryArgs)
+    const { data, isFetching } = useGetFilteredMoviesQuery(queryArgs)
 
     // Обработчики
     const handleSortChange = (value: string) => {
@@ -77,7 +78,12 @@ export const FilteredMovies = () => {
                     onReset={handleReset}
                 />
                 <Paper elevation={0} sx={{ p: 3, backgroundColor: 'transparent', width: '75%' }}>
-                    <SortedMovies data={data} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                    <SortedMovies
+                        data={data}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                        isFetching={isFetching}
+                    />
                 </Paper>
             </Box>
         </Box>
